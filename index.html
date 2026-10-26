@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SM One Stop - everyday finds, all in one place.">
+  <title>SM One Stop — Everyday finds, all in one place</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="utility-bar">
+    <span>Free delivery on orders over ₱1,500</span>
+    <span class="utility-dot">•</span>
+    <span>Made for everyday living</span>
+    <div class="utility-links">
+      <button type="button" id="my-orders-button">My orders</button>
+      <span class="utility-dot">•</span>
+      <a href="admin.html">Admin demo</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-main">
+      <a class="brand" href="#" aria-label="SM One Stop home">
+        <span class="brand-mark">SM</span>
+        <span class="brand-copy">
+          <strong>SM ONE STOP</strong>
+          <small>EVERYDAY FINDS, ALL IN ONE PLACE</small>
+        </span>
+      </a>
+      <form class="search-form" id="search-form" role="search">
+        <label class="sr-only" for="search">Search products</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Search for everyday finds...">
+        <button type="submit">Search</button>
+      </form>
+      <div class="header-actions">
+        <button type="button" class="header-action" id="wishlist-button" aria-label="Wishlist">
+          <span class="action-icon" aria-hidden="true">♡</span>
+          <span>Wishlist <b id="wishlist-count">0</b></span>
+        </button>
+        <button type="button" class="header-action" id="cart-button" aria-label="Cart">
+          <span class="action-icon bag-icon" aria-hidden="true">▢</span>
+          <span>Cart <b id="cart-count">0</b></span>
+        </button>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#categories" class="category-link"><span class="menu-icon">☰</span> Shop by category <span class="chevron">⌄</span></a>
+      <a href="#shop">Today's picks</a>
+      <a href="#shop">Beauty finds</a>
+      <a href="#shop">Local pantry</a>
+      <span class="nav-note">♢ &nbsp; Little finds, delivered with care</span>
+    </nav>
+  </header>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="side-drawer" id="side-drawer" aria-label="Shopping details" aria-hidden="true">
+    <div class="drawer-header">
+      <div>
+        <p class="eyebrow" id="drawer-eyebrow">YOUR BAG</p>
+        <h2 id="drawer-title">Your cart</h2>
+      </div>
+      <button class="drawer-close" id="drawer-close" type="button" aria-label="Close panel">×</button>
+    </div>
+    <div class="drawer-content" id="drawer-content"></div>
+    <div class="drawer-footer" id="drawer-footer"></div>
+  </aside>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">✣ &nbsp; A LITTLE LOCAL. A LOT TO LOVE.</p>
+        <h1 id="hero-title">Good finds,<br><em>all in one stop.</em></h1>
+        <p class="hero-description">Your everyday picks, thoughtfully gathered and ready to make life a little brighter.</p>
+        <a class="primary-button" href="#shop">Shop the picks <span aria-hidden="true">→</span></a>
+        <div class="hero-signature">
+          <span>SM</span>
+          <p>Small joys, fair prices<br><strong>Always a good find.</strong></p>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="A curated collection of everyday finds at SM One Stop">
+        <div class="sun-disc"></div>
+        <div class="art-label">A curated collection of<br>everyday finds at SM One Stop</div>
+        <div class="product-scene">
+          <div class="plant-pot"><span>✦</span></div>
+          <div class="bottle"><i></i></div>
+          <div class="book-stack"></div>
+          <div class="mug"></div>
+        </div>
+        <div class="offer-card">
+          <small>YOUR EVERYDAY<br>PICK-ME-UP</small>
+          <strong>UP TO 30% OFF</strong>
+          <span>on selected finds</span>
+        </div>
+        <div class="round-stamp">GOOD<br>FINDS<br>INSIDE <span>✳</span></div>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Shopping benefits">
+      <div class="benefit"><span class="benefit-icon delivery">♧</span><div><strong>Ready when you are</strong><small>Tracked delivery, every order</small></div></div>
+      <div class="benefit"><span class="benefit-icon quality">♡</span><div><strong>Thoughtfully picked</strong><small>Everyday quality, made easy</small></div></div>
+      <div class="benefit"><span class="benefit-icon checkout">♢</span><div><strong>Easy, secure checkout</strong><small>Pay your way, no surprises</small></div></div>
+    </section>
+
+    <section class="categories" id="categories" aria-labelledby="categories-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">TAKE A LITTLE LOOK</p><h2 id="categories-title">Find your kind of good</h2></div>
+        <p>A few favourites, all close by <span>✦</span></p>
+      </div>
+      <div class="category-list">
+        <button class="category active" data-category="Everything"><span>✦</span> Everything <b>↗</b></button>
+        <button class="category" data-category="Electronics"><span>◉</span> Electronics <b>↗</b></button>
+        <button class="category" data-category="Clothing"><span>⌁</span> Clothing <b>↗</b></button>
+        <button class="category" data-category="Beauty"><span>✿</span> Beauty <b>↗</b></button>
+        <button class="category" data-category="Accessories"><span>◇</span> Accessories <b>↗</b></button>
+        <button class="category" data-category="Food"><span>☼</span> Food <b>↗</b></button>
+      </div>
+    </section>
+
+    <section class="shop-section" id="shop" aria-labelledby="shop-title">
+      <div class="shop-heading">
+        <div><p class="eyebrow">THE EVERYDAY EDIT ✳</p><h2 id="shop-title">Good picks, right now</h2><p id="result-count">6 little finds picked for your everyday.</p></div>
+        <label class="sort-label">Sort by <select id="sort"><option>Featured</option><option>Price: low to high</option><option>Price: high to low</option></select></label>
+      </div>
+      <div class="product-grid" id="product-grid">
+        <article class="product-card" data-catalog-id="product-0" data-category="Home" data-price="299"><div class="product-image sage"><span>NEW</span><div class="product-illustration candle"></div></div><div class="product-info"><small>HOME</small><h3>Sunday Morning Candle</h3><strong>₱299</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-1" data-category="Accessories" data-price="499"><div class="product-image peach"><div class="product-illustration tote"></div></div><div class="product-info"><small>ACCESSORIES</small><h3>Everyday Canvas Tote</h3><strong>₱499</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-2" data-category="Beauty" data-price="389"><div class="product-image cream"><div class="product-illustration skincare"></div></div><div class="product-info"><small>BEAUTY</small><h3>Daily Glow Essentials</h3><strong>₱389</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-3" data-category="Food" data-price="159"><div class="product-image yellow"><div class="product-illustration coffee"></div></div><div class="product-info"><small>FOOD</small><h3>Local Roast Coffee</h3><strong>₱159</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-4" data-category="Clothing" data-price="699"><div class="product-image blue"><div class="product-illustration shirt"></div></div><div class="product-info"><small>CLOTHING</small><h3>Soft Weekend Shirt</h3><strong>₱699</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-5" data-category="Electronics" data-price="899"><div class="product-image lilac"><div class="product-illustration speaker"></div></div><div class="product-info"><small>ELECTRONICS</small><h3>Pocket Sound Speaker</h3><strong>₱899</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+      </div>
+    </section>
+
+    <section class="closing-banner"><div><p class="eyebrow">THE LITTLE EXTRAS</p><h2>A good day starts with a good find.</h2><p>6 picks are on offer today. A little treat for your everyday.</p><a href="#categories">Find your next favourite <span>→</span></a></div><strong>SM<br><small>ONE</small></strong></section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-brand"><a class="brand" href="#"><span class="brand-mark">SM</span><span class="brand-copy"><strong>SM ONE STOP</strong><small>EVERYDAY FINDS, ALL IN ONE PLACE</small></span></a><p>Good finds for the everyday, gathered in one happy little place.</p></div><nav aria-label="Footer navigation"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#shop">Shop again</a></nav><div class="footer-note"><small>MADE FOR YOUR EVERYDAY</small><strong>SM One Stop</strong><span>Philippine pesos · demo store</span></div></footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

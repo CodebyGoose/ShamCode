@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SM One Stop — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page">
+  <section class="admin-view" aria-labelledby="admin-title">
+    <div class="admin-topbar"><a href="index.html">← &nbsp; Back to shop</a><div><span>♢ &nbsp; Protected admin area</span><button id="reset-data" type="button">Reset order data</button></div></div>
+    <div class="admin-login" id="admin-login">
+      <div class="admin-logo">SM <span>✳</span></div>
+      <p class="admin-kicker">SM ONE STOP · ADMINISTRATION</p>
+      <h1 id="admin-title">Good to have you back.</h1>
+      <p class="admin-intro">Sign in to manage the shop, orders and inventory.</p>
+      <form class="login-form" id="login-form">
+        <label for="username">Username</label><input id="username" value="admin" autocomplete="username">
+        <label for="password">Password</label><div class="password-field"><input id="password" type="password" value="SMOneStop!2026" autocomplete="current-password"><button type="button" id="show-password">Show</button></div>
+        <button class="admin-signin" type="submit">Sign in to dashboard <span>→</span></button><p class="login-error" id="login-error" role="alert"></p>
+      </form>
+      <div class="demo-access"><strong>Demo administrator access</strong><span>Username <code>admin</code> · Password <code>SMOneStop!2026</code></span></div>
+    </div>
+    <div class="admin-dashboard" id="admin-dashboard">
+      <aside class="admin-sidebar">
+        <div class="admin-side-brand"><span class="brand-mark">SM</span><strong>ONE STOP</strong></div>
+        <nav aria-label="Admin navigation">
+          <button class="admin-nav active" data-section="overview" type="button">▦ <span>Overview</span></button>
+          <button class="admin-nav" data-section="products" type="button">□ <span>Products</span></button>
+          <button class="admin-nav" data-section="orders" type="button">▤ <span>Orders</span></button>
+          <button class="admin-nav" data-section="sales-analytics" type="button">⌁ <span>Sales Analytics</span></button>
+          <button class="admin-nav" data-section="demand-forecasting" type="button">⌂ <span>Demand Forecasting</span></button>
+          <button class="admin-nav" data-section="vouchers" type="button">◇ <span>Vouchers</span></button>
+          <button class="admin-nav" data-section="customers" type="button">♙ <span>Customers</span></button>
+          <button class="admin-nav" data-section="inventory" type="button">◇ <span>Inventory</span></button>
+        </nav>
+        <button class="admin-signout side-signout" id="signout" type="button">Sign out</button>
+      </aside>
+      <main class="admin-content">
+        <div class="dashboard-heading"><div><p class="admin-kicker" id="section-label">OVERVIEW</p><h1 id="section-title">Good morning, admin.</h1><p id="section-description">Here is what is happening with your shop today.</p></div><span class="admin-date">October 26, 2026</span></div>
+        <div class="admin-stats"><div><small>ORDERS</small><strong id="admin-order-count">0</strong><span>Saved locally</span></div><div><small>PRODUCTS</small><strong>56</strong><span>4 low in stock</span></div><div><small>REVENUE</small><strong id="admin-revenue">₱0</strong><span>From local orders</span></div></div>
+        <div id="admin-section-content"></div>
+      </main>
+    </div>
+    <small class="admin-copyright">SM One Stop E-Commerce · Shop management</small>
+  </section>
+  <div class="product-modal" id="product-modal" aria-hidden="true">
+    <form class="product-modal-card" id="product-form">
+      <div class="modal-heading"><div><p class="admin-kicker">PRODUCT CATALOG</p><h2>Add product</h2></div><button id="modal-close" type="button" aria-label="Close">×</button></div>
+      <label for="new-name">Name</label><input id="new-name" required placeholder="Product name">
+      <label for="new-category">Category</label><select id="new-category" required><option value="">Choose category</option><option>Electronics</option><option>Clothing</option><option>Beauty</option><option>Accessories</option><option>Food</option></select>
+      <label for="new-price">Price</label><input id="new-price" type="number" min="0" required placeholder="299">
+      <label for="new-stock">Stock</label><input id="new-stock" type="number" min="0" required placeholder="10">
+      <label for="new-image">Product image URL <small>(optional)</small></label><input id="new-image" type="url" placeholder="https://example.com/product.jpg">
+      <img id="new-image-preview" class="product-image-preview" alt="Product URL preview" hidden>
+      <p class="modal-error" id="modal-error"></p>
+      <button class="admin-signin" type="submit">Add product <span>→</span></button>
+    </form>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
