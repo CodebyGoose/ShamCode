@@ -1,3 +1,7 @@
+/*
+  Global design system ito. Nandito ang colors, typography, spacing,
+  responsive layout, product cards, drawers, buttons, at admin dashboard styles.
+*/
 :root {
   --ink: #263638;
   --muted: #737575;

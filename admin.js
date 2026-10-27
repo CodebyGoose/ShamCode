@@ -1,3 +1,7 @@
+/*
+  Admin dashboard controller ito. Binabasa at sine-save nito ang orders,
+  products, inventory, activity, at vouchers gamit ang localStorage.
+*/
 const keys = {
   orders: 'sm-one-stop-orders',
   products: 'sm-one-stop-products',
@@ -12,6 +16,7 @@ const read = (key, fallback = []) => JSON.parse(localStorage.getItem(key) || JSO
 const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 const money = (value) => `₱${Number(value).toLocaleString('en-PH')}`;
 const categories = ['Electronics', 'Clothing', 'Beauty', 'Accessories', 'Food'];
+// Default vouchers ito para may ready-to-use discounts ang demo dashboard.
 const defaultVouchers = [
   { id: 'voucher-welcome10', code: 'WELCOME10', type: 'percent', value: 10, minimum: 500, active: true },
   { id: 'voucher-save100', code: 'SAVE100', type: 'fixed', value: 100, minimum: 1000, active: true },
@@ -19,21 +24,28 @@ const defaultVouchers = [
   { id: 'voucher-firstbuy', code: 'FIRSTBUY', type: 'fixed', value: 75, minimum: 700, active: true },
   { id: 'voucher-everyday5', code: 'EVERYDAY5', type: 'percent', value: 5, minimum: 0, active: true }
 ];
+// Fallback images ito para may larawan ang catalog products kapag walang custom image.
 const defaultImages = {
   'Sunday Morning Candle': 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600',
   'Everyday Canvas Tote': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600',
   'Daily Glow Essentials': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600',
   'Local Roast Coffee': 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600',
   'Soft Weekend Shirt': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600',
-  'Pocket Sound Speaker': 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600'
+  'Pocket Sound Speaker': 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600',
+  'Soft Cotton Hand Towels': 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600'
 };
 const categoryOptions = (selected) => categories.map((category) => `<option ${category === selected ? 'selected' : ''}>${category}</option>`).join('');
+// Seed catalog ito na ginagamit kapag first visit at wala pang saved admin data.
 const defaultProducts = [
   ['Sunday Morning Candle', 'Home', 299, 20], ['Everyday Canvas Tote', 'Accessories', 499, 12],
   ['Daily Glow Essentials', 'Beauty', 389, 3], ['Local Roast Coffee', 'Food', 159, 14],
   ['Soft Weekend Shirt', 'Clothing', 699, 8], ['Pocket Sound Speaker', 'Electronics', 899, 6]
 ];
 
+/*
+  Naghahanda ito ng initial catalog at inventory, nag-aalis ng duplicates,
+  at nagsa-save ng default image URLs para pareho ang nakikita ng admin at customer.
+*/
 function seedData() {
   const products = read(keys.products, defaultProducts.map(([name, category, price], index) => ({ id: `product-${index}`, name, category, price })));
   const inventory = read(keys.inventory, defaultProducts.map(([name, category, price, stock], index) => ({ id: `product-${index}`, name, category, price, stock })));
@@ -43,9 +55,9 @@ function seedData() {
   inventory.splice(0, inventory.length, ...uniqueInventory);
   products.forEach((item, index) => { item.id ||= `product-${index}`; });
   inventory.forEach((item, index) => { item.id ||= products[index]?.id || `product-${index}`; });
-  products.forEach((item) => { if (!item.image && defaultImages[item.name]) item.image = defaultImages[item.name]; });
+  products.forEach((item) => { if ((!item.image || item.name === 'Soft Cotton Hand Towels') && defaultImages[item.name]) item.image = defaultImages[item.name]; });
   products.forEach((item) => { if (item.name === 'Pocket Sound Speaker' && (!item.image || item.image.includes('1608043152269') || item.image.includes('1589003077984') || item.image.includes('imgs.search.brave.com'))) item.image = defaultImages[item.name]; });
-  inventory.forEach((item) => { if (!item.image && defaultImages[item.name]) item.image = defaultImages[item.name]; });
+  inventory.forEach((item) => { if ((!item.image || item.name === 'Soft Cotton Hand Towels') && defaultImages[item.name]) item.image = defaultImages[item.name]; });
   inventory.forEach((item) => { if (item.name === 'Pocket Sound Speaker' && (!item.image || item.image.includes('1608043152269') || item.image.includes('1589003077984') || item.image.includes('imgs.search.brave.com'))) item.image = defaultImages[item.name]; });
   products.forEach((item) => { if (!categories.includes(item.category)) item.category = 'Accessories'; });
   inventory.forEach((item) => { if (!categories.includes(item.category)) item.category = 'Accessories'; });

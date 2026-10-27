@@ -1,3 +1,7 @@
+/*
+  Customer storefront controller ito. Kinukuha nito ang product cards,
+  cart, wishlist, drawer, at localStorage data para gumana ang shopping flow.
+*/
 let products = [...document.querySelectorAll('.product-card')];
 const resultCount = document.querySelector('#result-count');
 const cartCount = document.querySelector('#cart-count');
@@ -10,6 +14,7 @@ let drawerMode = 'cart';
 const orderKey = 'sm-one-stop-orders';
 const productKey = 'sm-one-stop-products';
 const voucherKey = 'sm-one-stop-vouchers';
+// Default discount codes ito na gagamitin kapag wala pang saved vouchers.
 const defaultVouchers = [
   { id: 'voucher-welcome10', code: 'WELCOME10', type: 'percent', value: 10, minimum: 500, active: true },
   { id: 'voucher-save100', code: 'SAVE100', type: 'fixed', value: 100, minimum: 1000, active: true },
@@ -17,23 +22,50 @@ const defaultVouchers = [
   { id: 'voucher-firstbuy', code: 'FIRSTBUY', type: 'fixed', value: 75, minimum: 700, active: true },
   { id: 'voucher-everyday5', code: 'EVERYDAY5', type: 'percent', value: 5, minimum: 0, active: true }
 ];
+/*
+  Image map ito ng products. Kapag walang image ang catalog item,
+  gagamitin ng sync function ang matching URL base sa product name.
+*/
 const defaultImages = {
   'Sunday Morning Candle': 'https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600',
   'Everyday Canvas Tote': 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600',
   'Daily Glow Essentials': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600',
   'Local Roast Coffee': 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600',
   'Soft Weekend Shirt': 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600',
-  'Pocket Sound Speaker': 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600'
+  'Pocket Sound Speaker': 'https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=600',
+  'Woven Table Runner': 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600',
+  'Mini Zip Pouch': 'https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600',
+  'Fresh Start Hand Cream': 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600',
+  'Honey Oat Granola': 'https://images.unsplash.com/photo-1517093728432-a0440f8d45af?w=600',
+  'Relaxed Linen Shorts': 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600',
+  'Compact Desk Lamp': 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600',
+  'Soft Cotton Hand Towels': 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600',
+  'Calamansi Tea Sachets': 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600',
+  'Daily Carry Crossbody': 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600'
 };
+// Minimum catalog ito ng storefront para laging may 15 products sa customer page.
 const builtInProducts = [
   ['Sunday Morning Candle', 'Accessories', 299],
   ['Everyday Canvas Tote', 'Accessories', 499],
   ['Daily Glow Essentials', 'Beauty', 389],
   ['Local Roast Coffee', 'Food', 159],
   ['Soft Weekend Shirt', 'Clothing', 699],
-  ['Pocket Sound Speaker', 'Electronics', 899]
+  ['Pocket Sound Speaker', 'Electronics', 899],
+  ['Woven Table Runner', 'Home', 549],
+  ['Mini Zip Pouch', 'Accessories', 349],
+  ['Fresh Start Hand Cream', 'Beauty', 279],
+  ['Honey Oat Granola', 'Food', 229],
+  ['Relaxed Linen Shorts', 'Clothing', 799],
+  ['Compact Desk Lamp', 'Electronics', 1299],
+  ['Soft Cotton Hand Towels', 'Home', 459],
+  ['Calamansi Tea Sachets', 'Food', 189],
+  ['Daily Carry Crossbody', 'Accessories', 649]
 ];
 
+/*
+  Sini-sync nito ang HTML cards at saved localStorage catalog.
+  Ina-add ang missing products, ina-update ang presyo/category/image, at inaalis ang duplicate cards.
+*/
 function syncCustomerProducts() {
   const catalog = JSON.parse(localStorage.getItem(productKey) || 'null');
   if (!catalog) {
@@ -47,7 +79,7 @@ function syncCustomerProducts() {
   }
   let catalogChanged = false;
   catalog.forEach((item) => {
-    if (!item.image && defaultImages[item.name]) {
+    if ((!item.image || item.name === 'Soft Cotton Hand Towels') && defaultImages[item.name]) {
       item.image = defaultImages[item.name];
       catalogChanged = true;
     }

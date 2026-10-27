@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--
+    Main customer storefront page ito. Naka-organize dito ang header,
+    shopping hero, categories, product catalog, cart drawer, at footer.
+  -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="SM One Stop - everyday finds, all in one place.">
@@ -70,6 +74,7 @@
     <div class="drawer-footer" id="drawer-footer"></div>
   </aside>
 
+  <!-- Main content area ito kung saan makikita ang customer shopping experience. -->
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
@@ -121,6 +126,7 @@
       </div>
     </section>
 
+    <!-- Product section ito; dito ni-rerender ng script ang filtering at catalog cards. -->
     <section class="shop-section" id="shop" aria-labelledby="shop-title">
       <div class="shop-heading">
         <div><p class="eyebrow">THE EVERYDAY EDIT ✳</p><h2 id="shop-title">Good picks, right now</h2><p id="result-count">6 little finds picked for your everyday.</p></div>
@@ -133,10 +139,19 @@
         <article class="product-card" data-catalog-id="product-3" data-category="Food" data-price="159"><div class="product-image yellow"><div class="product-illustration coffee"></div></div><div class="product-info"><small>FOOD</small><h3>Local Roast Coffee</h3><strong>₱159</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
         <article class="product-card" data-catalog-id="product-4" data-category="Clothing" data-price="699"><div class="product-image blue"><div class="product-illustration shirt"></div></div><div class="product-info"><small>CLOTHING</small><h3>Soft Weekend Shirt</h3><strong>₱699</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
         <article class="product-card" data-catalog-id="product-5" data-category="Electronics" data-price="899"><div class="product-image lilac"><div class="product-illustration speaker"></div></div><div class="product-info"><small>ELECTRONICS</small><h3>Pocket Sound Speaker</h3><strong>₱899</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-6" data-category="Home" data-price="549"><div class="product-image cream"><div class="product-illustration candle"></div></div><div class="product-info"><small>HOME</small><h3>Woven Table Runner</h3><strong>₱549</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-7" data-category="Accessories" data-price="349"><div class="product-image blue"><div class="product-illustration tote"></div></div><div class="product-info"><small>ACCESSORIES</small><h3>Mini Zip Pouch</h3><strong>₱349</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-8" data-category="Beauty" data-price="279"><div class="product-image peach"><div class="product-illustration skincare"></div></div><div class="product-info"><small>BEAUTY</small><h3>Fresh Start Hand Cream</h3><strong>₱279</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-9" data-category="Food" data-price="229"><div class="product-image sage"><div class="product-illustration coffee"></div></div><div class="product-info"><small>FOOD</small><h3>Honey Oat Granola</h3><strong>₱229</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-10" data-category="Clothing" data-price="799"><div class="product-image yellow"><div class="product-illustration shirt"></div></div><div class="product-info"><small>CLOTHING</small><h3>Relaxed Linen Shorts</h3><strong>₱799</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-11" data-category="Electronics" data-price="1299"><div class="product-image peach"><div class="product-illustration speaker"></div></div><div class="product-info"><small>ELECTRONICS</small><h3>Compact Desk Lamp</h3><strong>₱1,299</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-12" data-category="Home" data-price="459"><div class="product-image blue"><div class="product-illustration candle"></div></div><div class="product-info"><small>HOME</small><h3>Soft Cotton Hand Towels</h3><strong>₱459</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-13" data-category="Food" data-price="189"><div class="product-image yellow"><div class="product-illustration coffee"></div></div><div class="product-info"><small>FOOD</small><h3>Calamansi Tea Sachets</h3><strong>₱189</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
+        <article class="product-card" data-catalog-id="product-14" data-category="Accessories" data-price="649"><div class="product-image lilac"><div class="product-illustration tote"></div></div><div class="product-info"><small>ACCESSORIES</small><h3>Daily Carry Crossbody</h3><strong>₱649</strong><div class="product-actions"><button class="add-button" type="button">Add to cart</button><button class="buy-button" type="button">Buy now</button></div></div></article>
       </div>
     </section>
 
-    <section class="closing-banner"><div><p class="eyebrow">THE LITTLE EXTRAS</p><h2>A good day starts with a good find.</h2><p>6 picks are on offer today. A little treat for your everyday.</p><a href="#categories">Find your next favourite <span>→</span></a></div><strong>SM<br><small>ONE</small></strong></section>
+    <section class="closing-banner"><div><p class="eyebrow">THE LITTLE EXTRAS</p><h2>A good day starts with a good find.</h2><p>15 picks are on offer today. A little treat for your everyday.</p><a href="#categories">Find your next favourite <span>→</span></a></div><strong>SM<br><small>ONE</small></strong></section>
   </main>
 
   <footer class="site-footer"><div class="footer-brand"><a class="brand" href="#"><span class="brand-mark">SM</span><span class="brand-copy"><strong>SM ONE STOP</strong><small>EVERYDAY FINDS, ALL IN ONE PLACE</small></span></a><p>Good finds for the everyday, gathered in one happy little place.</p></div><nav aria-label="Footer navigation"><a href="#shop">Shop</a><a href="#categories">Categories</a><a href="#shop">Shop again</a></nav><div class="footer-note"><small>MADE FOR YOUR EVERYDAY</small><strong>SM One Stop</strong><span>Philippine pesos · demo store</span></div></footer>
